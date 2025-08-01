@@ -34,7 +34,7 @@ class ScratchCardProvider(
         if ((version.android.toIntOrNull() ?: 0) > 277028) {
             _scratchCard.emit(ScratchCard.ActivatedScratchCard(_scratchCard.value.id))
         } else {
-            notificator.notify(AppNotification.Notification("Unable to activate card - update your application"))
+            notificator.notify("Unable to activate card - update your application")
         }
     }
 }

@@ -25,7 +25,7 @@ fun WidgetScratchCard(
     card: ScratchCard,
     modifier: Modifier = Modifier
 ) {
-    val state = animateFloatAsState(if (card !is ScratchCard.UnscratchedScratchCard) 1f else 0f)
+    val state = animateFloatAsState(if (card !is ScratchCard.UnscratchedScratchCard) 0f else 1f)
 
     Box(
         Modifier
