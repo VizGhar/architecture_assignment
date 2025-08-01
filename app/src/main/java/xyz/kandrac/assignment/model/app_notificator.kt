@@ -1,16 +1,17 @@
 package xyz.kandrac.assignment.model
 
+import androidx.annotation.VisibleForTesting
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 sealed interface AppNotification {
     data object None: AppNotification
-    data class Notification(val message: String, private val id: Int) : AppNotification
+    data class Notification(val message: String, val id: Int) : AppNotification
 }
 
 class AppNotificator() {
 
-    private var currentId = 0
+    @VisibleForTesting var currentId = 0
     private val _notification = MutableStateFlow<AppNotification>(AppNotification.None)
 
     val notification: StateFlow<AppNotification> = _notification

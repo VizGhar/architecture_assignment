@@ -1,5 +1,6 @@
 package xyz.kandrac.assignment.model
 
+import androidx.annotation.VisibleForTesting
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +22,7 @@ class ScratchCardProvider(
 
     val scratchCard: StateFlow<ScratchCard> = _scratchCard
 
-    private suspend fun scratch() {
+    @VisibleForTesting suspend fun scratch() {
         if (scratchCard.value !is ScratchCard.UnscratchedScratchCard) {
             throw IllegalStateException("Can't scratch ")
         }
@@ -29,7 +30,7 @@ class ScratchCardProvider(
         _scratchCard.emit(ScratchCard.ScratchedScratchCard(_scratchCard.value.id) { activate() })
     }
 
-    private suspend fun activate() {
+    @VisibleForTesting suspend fun activate() {
         val version = service.sendScratchCardCode(_scratchCard.value.id)
         if ((version.android.toIntOrNull() ?: 0) > 277028) {
             _scratchCard.emit(ScratchCard.ActivatedScratchCard(_scratchCard.value.id))

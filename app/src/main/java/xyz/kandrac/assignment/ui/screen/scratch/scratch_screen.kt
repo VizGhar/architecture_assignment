@@ -26,7 +26,7 @@ class ScreenScratchViewModel @Inject constructor(
     val scratchCard = scratchCardProvider.scratchCard
 
     fun scratch() {
-        storeJob(viewModelScope.launch(Dispatchers.IO) {
+        storeJob(viewModelScope.launch {
             (scratchCard.value as? ScratchCard.UnscratchedScratchCard)?.scratch?.invoke() ?: run {
                 throw IllegalStateException("Invalid scratch card state")
             }
