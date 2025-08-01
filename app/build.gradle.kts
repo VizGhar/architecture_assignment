@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.hilt.android)
     implementation(libs.logging.interceptor)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.hilt.android.testing)
