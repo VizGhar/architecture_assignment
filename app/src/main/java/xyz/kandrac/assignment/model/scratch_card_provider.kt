@@ -30,7 +30,7 @@ class ScratchCardProvider(
     }
 
     private suspend fun activate() {
-        val version = service.getVersion()
+        val version = service.sendScratchCardCode(_scratchCard.value.id)
         if ((version.android.toIntOrNull() ?: 0) > 277028) {
             _scratchCard.emit(ScratchCard.ActivatedScratchCard(_scratchCard.value.id))
         } else {
