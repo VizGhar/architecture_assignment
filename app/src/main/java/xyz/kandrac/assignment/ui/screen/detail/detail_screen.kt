@@ -34,6 +34,7 @@ fun ScreenDetail(
 
     Column {
         WidgetScratchCard(scratchCard)
+        Text("Card is ${scratchCard.readableName}")
         Row {
             Button(onClick = onScratchRequired, enabled = scratchCard is ScratchCard.UnscratchedScratchCard) {
                 Text("Scratch it!")

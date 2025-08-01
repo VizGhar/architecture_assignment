@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import xyz.kandrac.assignment.net.service.ScratchCardService
 
-sealed class ScratchCard(val id: String) {
-    class UnscratchedScratchCard(id: String, val scratch: suspend () -> Unit) : ScratchCard(id)
-    class ScratchedScratchCard(id: String, val activate: suspend () -> Unit) : ScratchCard(id)
-    class ActivatedScratchCard(id: String) : ScratchCard(id)
+sealed class ScratchCard(val id: String, val readableName: String) {
+    class UnscratchedScratchCard(id: String, val scratch: suspend () -> Unit) : ScratchCard(id, "Unscratched")
+    class ScratchedScratchCard(id: String, val activate: suspend () -> Unit) : ScratchCard(id, "Scratched")
+    class ActivatedScratchCard(id: String) : ScratchCard(id, "Activated")
 }
 
 class ScratchCardProvider(

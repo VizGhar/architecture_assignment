@@ -9,7 +9,6 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.kandrac.assignment.model.ScratchCard
 import xyz.kandrac.assignment.model.ScratchCardProvider
@@ -45,6 +44,7 @@ fun ScreenScratch() {
 
     Column {
         WidgetScratchCard(scratchCard)
+        Text("Card is ${scratchCard.readableName}")
         Button(onClick = { viewModel.scratch() }, enabled = scratchCard is ScratchCard.UnscratchedScratchCard) {
             Text("Scratch it!")
         }
